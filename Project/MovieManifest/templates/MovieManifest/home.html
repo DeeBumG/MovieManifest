@@ -1,6 +1,37 @@
 {% extends 'MovieManifest/base.html' %}
-{% block title %}{{ title }}{% endblock %}
+
+{% block title %}MovieManifest - Discover What's Popular{% endblock %}
+
 {% block content %}
-    <h1>Welcome to MovieManifest</h1>
-    <p>Your Premier Entertainment Reccomendation Service</p>
+<div class="homepage-grid">
+
+    <!-- 🎬 Main Section: Popular/Trending -->
+    <div class="main-section">
+        <h2>Popular & Trending</h2>
+        <div class="movie-grid">
+            {% for movie in popular_movies %}
+                <a href="{% url 'movie_detail' movie.id %}" class="movie-tile">
+                    <img src="{{ movie.image_url }}" alt="{{ movie.title }}">
+                    <div class="movie-title">{{ movie.title }}</div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 🎯 Sidebar Section: Personalized Recommendations -->
+    <div class="sidebar-section">
+        <h3>Recommended for You</h3>
+        <ul class="recommendation-list">
+            {% for rec in recommended_movies %}
+                <li>
+                    <a href="{% url 'view_reccommendations' %}#{{ rec.id }}">
+                        {{ rec.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'view_reccommendations' %}" class="button small-button mt-1">View All</a>
+    </div>
+
+</div>
 {% endblock %}

@@ -10,4 +10,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='MovieManifest/login.html'), name='login'),
     path('register/', LoginView.as_view(template_name='MovieManifest/register.html'), name='register'),
     path('logout/', views.custom_logout, name='logout'),
+    path('movie/<int:pk>/', views.movie_detail_view, name='movie_detail'),
+
 ]
