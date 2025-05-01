@@ -33,6 +33,10 @@ body {
     list-style: none;
     display: flex;
     gap: 1.5rem;
+    background-color: #0057b7; /* bright blue background */
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-links li a {
@@ -188,4 +192,31 @@ input[type="checkbox"]:checked + .genre-button {
 .small-button {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
+}
+.title-box {
+    background-color: #0057b7; /* bright blue background */
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title-box a {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+.recommendation-item {
+    display: block;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    background-color: #e6f0ff;
+    color: #003366;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.recommendation-item:hover {
+    background-color: #d0e3ff;
 }

@@ -5,8 +5,8 @@ from .models import Ticker
 
 def home(request):
     popular_movies = [
-        {'id': 1, 'title': 'Dune: Part Two', 'image_url': '/static/images/dune.jpg'},
-        {'id': 2, 'title': 'Oppenheimer', 'image_url': '/static/images/oppenheimer.jpg'},
+        {'id': 1, 'title': 'Dune: Part Two', 'image_url': 'https://m.media-amazon.com/images/M/MV5BNTc0YmQxMjEtODI5MC00NjFiLTlkMWUtOGQ5NjFmYWUyZGJhXkEyXkFqcGc@._V1_.jpg'},
+        {'id': 2, 'title': 'Oppenheimer', 'image_url': 'https://m.media-amazon.com/images/M/MV5BN2JkMDc5MGQtZjg3YS00NmFiLWIyZmQtZTJmNTM5MjVmYTQ4XkEyXkFqcGc@._V1_.jpg'},
         # Add more...
     ]
 

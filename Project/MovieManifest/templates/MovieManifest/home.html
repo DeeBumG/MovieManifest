@@ -20,12 +20,12 @@
 
     <!-- 🎯 Sidebar Section: Personalized Recommendations -->
     <div class="sidebar-section">
-        <h3>Recommended for You</h3>
+        <h3>🎯 Recommended for You</h3>
         <ul class="recommendation-list">
             {% for rec in recommended_movies %}
                 <li>
-                    <a href="{% url 'view_reccommendations' %}#{{ rec.id }}">
-                        {{ rec.title }}
+                    <a href="{% url 'view_reccommendations' %}" class= "recommendation-item">
+                        🎬 {{ rec.title }}
                     </a>
                 </li>
             {% endfor %}
