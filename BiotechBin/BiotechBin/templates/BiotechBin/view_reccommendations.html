@@ -1,0 +1,21 @@
+{% extends 'BiotechBin/base.html' %}
+
+{% block title %}Recommendations - MovieManifest{% endblock %}
+
+{% block content %}
+    <h1>Your Movie Recommendations</h1>
+    <p>Here are movies based on your preferences:</p>
+
+    <div class="movie-list">
+        <!-- Sample movie block -->
+        <div class="movie-card">
+            <h3>Inception</h3>
+            <p>Sci-Fi | 2010</p>
+        </div>
+        <div class="movie-card">
+            <h3>The Grand Budapest Hotel</h3>
+            <p>Comedy | 2014</p>
+        </div>
+        <!-- Loop through actual recommendations in your backend -->
+    </div>
+{% endblock %}

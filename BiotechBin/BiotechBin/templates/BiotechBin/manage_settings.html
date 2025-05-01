@@ -1,0 +1,20 @@
+{% extends 'BiotechBin/base.html' %}
+
+{% block title %}Settings - MovieManifest{% endblock %}
+
+{% block content %}
+    <h1>Account Settings</h1>
+    <p>Update your account information and preferences.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <!-- Example settings -->
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value="{{ user.email }}"><br><br>
+
+        <label for="password">New Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <button class="button" type="submit">Update Settings</button>
+    </form>
+{% endblock %}

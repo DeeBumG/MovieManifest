@@ -4,8 +4,10 @@ from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('tickers/', views.tickers, name='tickers'),
-    path('events/', views.events, name='events'),
+    path('manage_settings/', views.manage_settings, name='manage_settings'),
+    path('view_reccommendations/', views.view_reccommendations, name='view_reccommendations'),
+    path('preferences/', views.preferences, name='preferences'),
     path('login/', LoginView.as_view(template_name='BiotechBin/login.html'), name='login'),
+    path('register/', LoginView.as_view(template_name='BiotechBin/register.html'), name='register'),
     path('logout/', views.custom_logout, name='logout'),
 ]

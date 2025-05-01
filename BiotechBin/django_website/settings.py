@@ -75,16 +75,17 @@ WSGI_APPLICATION = 'django_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DATABASE_NAME', 'BioBinDB'),
-        'USER': os.environ.get('DATABASE_USER', 'user'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'mysqlpass'),
-        'HOST': os.environ.get('DATABASE_HOST', 'db'),
-        'PORT': os.environ.get('DATABASE_PORT', '3306'),
-    }
-}
+DATABASES = {}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('DATABASE_NAME', 'BioBinDB'),
+#         'USER': os.environ.get('DATABASE_USER', 'user'),
+#         'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'mysqlpass'),
+#         'HOST': os.environ.get('DATABASE_HOST', 'db'),
+#         'PORT': os.environ.get('DATABASE_PORT', '3306'),
+#     }
+# }
 
 
 # Password validation
