@@ -1,20 +1,51 @@
 {% extends 'MovieManifest/base.html' %}
-
-{% block title %}Settings - MovieManifest{% endblock %}
+{% block title %}Manage Settings{% endblock %}
 
 {% block content %}
-    <h1>Account Settings</h1>
-    <p>Update your account information and preferences.</p>
+<div class="text-center">
+    <h2>Admin: Manage Site Settings</h2>
+</div>
 
-    <form method="post">
-        {% csrf_token %}
-        <!-- Example settings -->
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="{{ user.email }}"><br><br>
-
-        <label for="password">New Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-
-        <button class="button" type="submit">Update Settings</button>
-    </form>
+<form method="post" class="mt-2">
+    {% csrf_token %}
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Setting</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Enable Recommendations</td>
+                <td>
+                    <select name="enable_recommendations">
+                        <option value="True">Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Maintenance Mode</td>
+                <td>
+                    <select name="maintenance_mode">
+                        <option value="True">On</option>
+                        <option value="False">Off</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Site Theme</td>
+                <td>
+                    <select name="site_theme">
+                        <option value="default">Default</option>
+                        <option value="dark">Dark</option>
+                        <option value="blue">Blue</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="button mt-2">Save Changes</button>
+</form>
 {% endblock %}

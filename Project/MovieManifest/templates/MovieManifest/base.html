@@ -19,8 +19,8 @@
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'preferences' %}">Preferences</a></li>
             <li><a href="{% url 'view_reccommendations' %}">Recommendations</a></li>
+            <li><a href="{% url 'manage_settings' %}">Manage Settings (Admin)</a></li>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'manage_settings' %}">Settings</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'register' %}">Register</a></li>

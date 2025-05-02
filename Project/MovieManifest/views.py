@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
-from .models import Ticker
+from .models import SiteSetting
+from .forms import SiteSettingFormSet
 
 def home(request):
     popular_movies = [
@@ -21,7 +22,14 @@ def home(request):
     })
 
 def manage_settings(request):
-    return render(request, 'MovieManifest/manage_settings.html', {'title': 'manage_settings'})
+    # Fake settings data
+    settings_data = [
+        {'key': 'site_name', 'value': 'MovieManifest'},
+        {'key': 'enable_recommendations', 'value': 'True'},
+        {'key': 'maintenance_mode', 'value': 'False'},
+    ]
+
+    return render(request, 'MovieManifest/manage_settings.html', {'settings_data': settings_data})
 
 def view_reccommendations(request):
     return render(request, 'MovieManifest/view_reccommendations.html', {'title': 'view_reccommendations'})

@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+class SiteSetting(models.Model):
+    key = models.CharField(max_length=100, unique=True)
+    value = models.TextField()
+
+    def __str__(self):
+        return f"{self.key}: {self.value}"
+
 # Ticker Model
 class Ticker(models.Model):
     symbol = models.CharField(max_length=10, unique=True)  # e.g., AAPL, SPY, GOOGL
