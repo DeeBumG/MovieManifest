@@ -7,7 +7,7 @@
     <p>Select your favorite genres, languages, and other viewing preferences.</p>
 
     <h1>Choose Your Favorite Genres</h1>
-    <form method="post">
+    <form action="/view_reccommendations/" method="post">
         {% csrf_token %}
         <div class="genre-selector">
             {% for genre in genres %}

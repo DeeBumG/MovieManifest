@@ -6,14 +6,18 @@ from .forms import SiteSettingFormSet
 
 def home(request):
     popular_movies = [
-        {'id': 1, 'title': 'Dune: Part Two', 'image_url': 'https://m.media-amazon.com/images/M/MV5BNTc0YmQxMjEtODI5MC00NjFiLTlkMWUtOGQ5NjFmYWUyZGJhXkEyXkFqcGc@._V1_.jpg'},
-        {'id': 2, 'title': 'Oppenheimer', 'image_url': 'https://m.media-amazon.com/images/M/MV5BN2JkMDc5MGQtZjg3YS00NmFiLWIyZmQtZTJmNTM5MjVmYTQ4XkEyXkFqcGc@._V1_.jpg'},
+        {'id': 1, 'title': 'Nacho Libre', 'image_url': 'https://m.media-amazon.com/images/M/MV5BMjMyNmEzNWYtMDNkYS00NGFmLWE3YjYtNDViYjUyMDA3MTlkXkEyXkFqcGc@._V1_.jpg'},
+        {'id': 2, 'title': 'School of Rock', 'image_url': 'https://m.media-amazon.com/images/M/MV5BOTg2NDU4Mjg2NV5BMl5BanBnXkFtZTgwNjQ0MDIyMDI@._V1_.jpg'},
+        {'id': 9, 'title': ' A Minecraft Movie', 'image_url': 'https://m.media-amazon.com/images/M/MV5BYzFjMzNjOTktNDBlNy00YWZhLWExYTctZDcxNDA4OWVhOTJjXkEyXkFqcGc@._V1_.jpg'},
+        {'id': 10, 'title': 'Kung Fu Panda', 'image_url': 'https://m.media-amazon.com/images/M/MV5BZDU5MDNiMGItYjVmZi00NDUxLTg2OTktNGE0NzNlNzM4NzgyXkEyXkFqcGc@._V1_.jpg'},
         # Add more...
     ]
 
     recommended_movies = [
         {'id': 5, 'title': 'Arrival'},
         {'id': 6, 'title': 'Ex Machina'},
+        {'id': 7, 'title': 'Grand Budapest Hotel'},
+        {'id': 8, 'title': 'Inception'}
     ]
 
     return render(request, 'MovieManifest/home.html', {
