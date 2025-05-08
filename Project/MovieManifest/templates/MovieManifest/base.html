@@ -8,22 +8,32 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+
+    <!-- Site Title -->
+    <header class="site-header">
+        <h1 class="site-title">
+            <a href="{% url 'home' %}">🎬 MovieManifest</a>
+        </h1>
+        {% if user.is_authenticated %}
+        <div class="navbar-user">
+            Welcome, {{ user.username }}!
+        </div>
+        {% endif %}
+    </header>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="navbar-brand">
-            <div class="title-box">
-                <a href="{% url 'home' %}">🎬 MovieManifest</a>
-            </div>
-        </div>
         <ul class="navbar-links">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'preferences' %}">Preferences</a></li>
             <li><a href="{% url 'view_reccommendations' %}">Recommendations</a></li>
-            <li><a href="{% url 'manage_settings' %}">Manage Settings (Admin)</a></li>
+            {% if user.is_authenticated and user.is_superuser %}
+                <li><a href="{% url 'manage_settings' %}">Manage Settings (Admin)</a></li>
+            {% endif %}
             {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
-                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'signup' %}">Signup</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
             {% endif %}
         </ul>
@@ -31,6 +41,13 @@
 
     <!-- Page Content -->
     <main class="content">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
         {% block content %}
         {% endblock %}
     </main>

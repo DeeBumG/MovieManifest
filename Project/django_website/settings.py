@@ -75,7 +75,11 @@ WSGI_APPLICATION = 'django_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-#DATABASES = {}
+#replace if running with no database:
+# DATABASES = {}
+
+#if running with a database:
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -126,8 +130,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'MovieManifest.User'
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}

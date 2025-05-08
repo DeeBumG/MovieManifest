@@ -1,4 +1,5 @@
 {% extends 'MovieManifest/base.html' %}
+
 {% block title %}Manage Settings{% endblock %}
 
 {% block content %}
@@ -6,6 +7,7 @@
     <h2>Admin: Manage Site Settings</h2>
 </div>
 
+<!-- Site Configuration Form -->
 <form method="post" class="mt-2">
     {% csrf_token %}
     <table class="content-table">
@@ -20,8 +22,8 @@
                 <td>Enable Recommendations</td>
                 <td>
                     <select name="enable_recommendations">
-                        <option value="True">Yes</option>
-                        <option value="False">No</option>
+                        <option value="True" {% if enable_recommendations %}selected{% endif %}>Yes</option>
+                        <option value="False" {% if not enable_recommendations %}selected{% endif %}>No</option>
                     </select>
                 </td>
             </tr>
@@ -29,8 +31,8 @@
                 <td>Maintenance Mode</td>
                 <td>
                     <select name="maintenance_mode">
-                        <option value="True">On</option>
-                        <option value="False">Off</option>
+                        <option value="True" {% if maintenance_mode %}selected{% endif %}>On</option>
+                        <option value="False" {% if not maintenance_mode %}selected{% endif %}>Off</option>
                     </select>
                 </td>
             </tr>
@@ -38,14 +40,76 @@
                 <td>Site Theme</td>
                 <td>
                     <select name="site_theme">
-                        <option value="default">Default</option>
-                        <option value="dark">Dark</option>
-                        <option value="blue">Blue</option>
+                        <option value="default" {% if site_theme == 'default' %}selected{% endif %}>Default</option>
+                        <option value="dark" {% if site_theme == 'dark' %}selected{% endif %}>Dark</option>
+                        <option value="blue" {% if site_theme == 'blue' %}selected{% endif %}>Blue</option>
                     </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Algorithm Strategy</td>
+                <td>
+                    <select name="algo_strategy">
+                        <option value="genre-weighted">Genre Weighted</option>
+                        <option value="popularity-boosted">Popularity Boosted</option>
+                        <option value="ai-driven">AI-Driven (Beta)</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Search Aggressiveness</td>
+                <td>
+                    <input type="range" name="search_aggressiveness" min="1" max="10" value="5">
                 </td>
             </tr>
         </tbody>
     </table>
-    <button type="submit" class="button mt-2">Save Changes</button>
+    <div style="text-align: center;" class="mt-2">
+        <button type="submit" class="button">Save Changes</button>
+    </div>    
 </form>
+
+<hr class="mt-2">
+
+<!-- User Management Table -->
+<h3 class="mt-2 text-center">Manage Users</h3>
+<table class="content-table mt-2">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Superuser</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.is_superuser|yesno:"Yes,No" }}</td>
+            <td>
+                {% if not user.is_superuser %}
+                    <form method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="promote_user" value="{{ user.id }}">
+                        <button class="small-button">Make Superuser</button>
+                    </form>
+                {% endif %}
+                {% if request.user.id != user.id %}
+                    <form method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="delete_user" value="{{ user.id }}">
+                        <button class="small-button" style="background-color:#dc3545;">Delete</button>
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center">No users found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

@@ -3,27 +3,36 @@
 {% block title %}Recommendations - MovieManifest{% endblock %}
 
 {% block content %}
-    <h1>Your Movie Recommendations</h1>
-    <p>Here are movies based on your preferences:</p>
+<h1>Your Movie Recommendations</h1>
+<p>Here are movies based on your preferences:</p>
 
-    <div class="movie-list">
-        <!-- Sample movie block -->
-        <div class="movie-card">
-            <h3>Inception</h3>
-            <p>Sci-Fi | 2010</p>
-        </div>
-        <div class="movie-card">
-            <h3>The Grand Budapest Hotel</h3>
-            <p>Comedy | 2014</p>
-        </div>
-        <div class="movie-card">
-            <h3>Ex Machina</h3>
-            <p>Sci Fi | 2014</p>
-        </div>
-        <div class="movie-card">
-            <h3>Arrival</h3>
-            <p>Sci Fi | 2016</p>
-        </div>
-        <!-- Loop through actual recommendations in your backend -->
+<div class="movie-grid">
+    <div class="movie-card">
+        <a href="https://www.imdb.com/title/tt1375666/" target="_blank" title="Inception on IMDb">
+            <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Inception">
+        </a>
+        <h4 class="movie-title">Inception</h4>
     </div>
+
+    <div class="movie-card">
+        <a href="https://www.imdb.com/title/tt2278388/" target="_blank" title="The Grand Budapest Hotel on IMDb">
+            <img src="https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="The Grand Budapest Hotel">
+        </a>
+        <h4 class="movie-title">The Grand Budapest Hotel</h4>
+    </div>
+
+    <div class="movie-card">
+        <a href="https://www.imdb.com/title/tt0470752/" target="_blank" title="Ex Machina on IMDb">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTUxNzc0OTIxMV5BMl5BanBnXkFtZTgwNDI3NzU2NDE@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Ex Machina">
+        </a>
+        <h4 class="movie-title">Ex Machina</h4>
+    </div>
+
+    <div class="movie-card">
+        <a href="https://www.imdb.com/title/tt2543164/" target="_blank" title="Arrival on IMDb">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTExMzU0ODcxNDheQTJeQWpwZ15BbWU4MDE1OTI4MzAy._V1_QL75_UX380_CR0,16,380,562_.jpg" alt="Arrival">
+        </a>
+        <h4 class="movie-title">Arrival</h4>
+    </div>
+</div>
 {% endblock %}
